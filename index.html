@@ -1,232 +1,268 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casos de Tremembe - Informacao e Memoria</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Informativo - Complexo de Tremembe</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f6f8;
-      color: #333;
-      line-height: 1.6;
-    }
+        body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            line-height: 1.6;
+        }
 
-    header {
-      background-color: #1e293b;
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
+        /* Cabecalho e Navegacao */
+        header {
+            background-color: #0f172a;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
+        nav {
+            background-color: #1e293b;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+        }
 
-    header p {
-      color: #94a3b8;
-    }
+        nav button {
+            background: none;
+            border: none;
+            color: #94a3b8;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+        nav button:hover, nav button.active {
+            background-color: #0284c7;
+            color: #fff;
+        }
 
-    /* Navegacao do site */
-    .view {
-      display: none;
-    }
+        /* Conteúdo Principal */
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
 
-    .view.active {
-      display: block;
-    }
+        .page {
+            display: none;
+        }
 
-    /* Cards da Home */
-    .grid-casos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
+        .page.active {
+            display: block;
+        }
 
-    .card {
-      background: #fff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-    }
+        /* Banner de Imagem */
+        .banner-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            background-color: #cbd5e1;
+        }
 
-    .card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
+        /* Cards de Casos */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
 
-    .card-body {
-      padding: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
 
-    .card-body h3 {
-      color: #1e293b;
-      margin-bottom: 0.5rem;
-    }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #e2e8f0;
+        }
 
-    .card-body p {
-      font-size: 0.9rem;
-      color: #64748b;
-      margin-bottom: 1rem;
-      flex-grow: 1;
-    }
+        .card-body {
+            padding: 20px;
+        }
 
-    .btn {
-      display: inline-block;
-      padding: 0.6rem 1rem;
-      background-color: #2563eb;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: bold;
-      text-align: center;
-    }
+        .card-body h3 {
+            margin-bottom: 10px;
+            color: #0f172a;
+        }
 
-    .btn:hover {
-      background-color: #1d4ed8;
-    }
+        .card-body p {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 12px;
+        }
 
-    /* Estilo das Paginas de Detalhes */
-    .detail-card {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-    }
+        /* Modal para Textos Explicativos */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-    .detail-card img {
-      width: 100%;
-      max-height: 320px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin: 1rem 0;
-    }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+        }
 
-    .btn-voltar {
-      background-color: #1e3a61;
-      margin-bottom: 1rem;
-    }
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-    .btn-voltar:hover {
-      background-color: #516075;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #64748b;
-      font-size: 0.85rem;
-    }
-  </style>
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Casos de Repercussao em Tremembe</h1>
-    <p>Portal informativo e historico sobre os processos judiciais</p>
-  </header>
+<header>
+    <h1>Arquivo Juridico - Tremembe</h1>
+    <p>Documentacao informativa sobre a Penitenciaria Dr. Tarcisio Leonce Machado Junior</p>
+</header>
 
-  <div class="container">
+<nav>
+    <button onclick="openPage('home')" class="active">Inicio</button>
+    <button onclick="openPage('casos')">Casos Registrados</button>
+    <button onclick="openPage('estrutura')">Estrutura e Regras</button>
+</nav>
 
-    <!-- TELA INICIAL (HOME) -->
-    <section id="home" class="view active">
-      <h2>Visao Geral</h2>
-      <p style="margin-top: 0.5rem;">
-        O Complexo Penitenciario de Tremembe (Penitenciaria II "Dr. Jose Augusto Cesar Salgado") e conhecido nacionalmente por custodiar pessoas envolvidas em processos judiciais de grande repercussão pública.
-      </p>
+<div class="container">
+    
+    <!-- PAGINA INICIAL -->
+    <section id="home" class="page active">
+        <!-- Substitua o src pela URL de uma imagem do complexo -->
+        <img src="https://via.placeholder.com/1100x250?text=Fachada+do+Complexo+Penitenciario" alt="Fachada de Tremembe" class="banner-img">
+        <h2>Visao Geral</h2>
+        <p style="margin-top: 10px;">
+            A unidade prisional de Tremembe, localizada no Vale do Paraiba (SP), e conhecida por abrigar detentos de casos com forte comocao social. O objetivo principal do isolamento em unidades específicas é garantir a integridade física dos apenados e a ordem da execução penal.
+        </p>
+    </section>
 
-      <div class="grid-casos">
+    <!-- PAGINA DE CASOS -->
+    <section id="casos" class="page">
+        <h2>Registros de Casos de Repercussao</h2>
+        <p style="margin-bottom: 20px;">Clique em um card para ler o texto explicativo detalhado.</p>
         
-        <!-- Card 1 -->
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600" alt="Justica">
-          <div class="card-body">
-            <h3>Caso Richthofen</h3>
-            <p>Processo de 2002 envolvendo o julgamento ocorrido em 2006.</p>
-            <button class="btn" onclick="mostrarPagina('richthofen')">Ver Detalhes</button>
-          </div>
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card">
+                <img src="https://via.placeholder.com/300x180?text=Imagem+Caso+1" alt="Caso Richthofen">
+                <div class="card-body">
+                    <h3>Caso Richthofen (2002)</h3>
+                    <p>Condenacao relativa ao homicidio dos pais. Cumprimento de pena na Penitenciaria Feminina I.</p>
+                    <button onclick="openModal('Texto explicativo sobre o processo, julgamento e progresso do Caso Richthofen conforme os autos publicos.')">Ler Texto Explicativo</button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card">
+                <img src="https://via.placeholder.com/300x180?text=Imagem+Caso+2" alt="Caso Nardoni">
+                <div class="card-body">
+                    <h3>Caso Nardoni (2008)</h3>
+                    <p>Processo referente ao homicidio de Isabella Nardoni. Cumprimento em regime fechado e semiarberto.</p>
+                    <button onclick="openModal('Texto explicativo detalhando as etapas do julgamento e a transferencia dos condenados para as unidades masculina e feminina de Tremembé.')">Ler Texto Explicativo</button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card">
+                <img src="https://via.placeholder.com/300x180?text=Imagem+Caso+3" alt="Caso Yoki">
+                <div class="card-body">
+                    <h3>Caso Yoki (2012)</h3>
+                    <p>Processo referente a morte de Marcos Kitano Matsunaga com pena cumprida no complexo.</p>
+                    <button onclick="openModal('Texto explicativo cobrindo os aspectos juridicos, pericias e a rotina de trabalho na unidade prisional durante a pena.')">Ler Texto Explicativo</button>
+                </div>
+            </div>
         </div>
-
-        <!-- Card 2 -->
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?w=600" alt="Documentos Judiciais">
-          <div class="card-body">
-            <h3>Caso Nardoni</h3>
-            <p>Detalhes sobre o julgamento e acompanhamento do processo de 2008.</p>
-            <button class="btn" onclick="mostrarPagina('nardoni')">Ver Detalhes</button>
-          </div>
-        </div>
-
-      </div>
     </section>
 
-    <!-- DETALHES: CASO RICHTHOFEN -->
-    <section id="richthofen" class="view">
-      <button class="btn btn-voltar" onclick="mostrarPagina('home')"> > Voltar para o inicio</button>
-      <div class="detail-card">
-        <h2>Caso Richthofen</h2>
-        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800" alt="Simbolo da Justica">
-        <h3>Historico Processual</h3>
-        <p>
-          O crime ocorreu em Sao Paulo no ano de 2002. O julgamento dos envolvidos ocorreu em 2006, resultando no cumprimento de pena na Penitenciaria de Tremembe, local destinado ao isolamento e proteção de detentos com forte apelo midiático.
+    <!-- PAGINA DE ESTRUTURA -->
+    <section id="estrutura" class="page">
+        <h2>Funcionamento da Unidade</h2>
+        <p style="margin-top: 10px;">
+            Diferente de outras unidades do sistema prisional, Tremembe nao possui faccoes criminosas organizadas e foca em atividades de reinsercao social atraves de oficinas de trabalho, artes e estudo.
         </p>
-      </div>
     </section>
 
-    <!-- DETALHES: CASO NARDONI -->
-    <section id="nardoni" class="view">
-      <button class="btn btn-voltar" onclick="mostrarPagina('home')"> > Voltar para o inicio</button>
-      <div class="detail-card">
-        <h2>Caso Nardoni</h2>
-        <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?w=800" alt="Documentos e Balanca">
-        <h3>Historico Processual</h3>
-        <p>
-          Ocorrido em 2008 em Sao Paulo, o julgamento foi concluido em 2010. A transferencia dos condenados para Tremembe visou garantir a seguranca fisica dos detentos devido à repercussão nacional do caso.
-        </p>
-      </div>
-    </section>
+</div>
 
-  </div>
+<!-- MODAL PARA EXIBIR TEXTOS DETALHADOS -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+        <h3 id="modal-title">Detalhes do Processo</h3>
+        <p id="modal-text" style="margin-top: 15px;"></p>
+    </div>
+</div>
 
-  <footer>
-    <p>Projeto Informativo  Registros publicos e cobertura jornalistica historica.</p>
-  </footer>
+<footer>
+    <p>Conteudo estritamente informativo baseado em registros publicos da Justica Brasileira.</p>
+</footer>
 
-  <script>
-    function mostrarPagina(idPagina) {
-      // Esconde todas as secaes
-      const paginas = document.querySelectorAll('.view');
-      paginas.forEach(pagina => pagina.classList.remove('active'));
+<script>
+    // Funcao para trocar de pagina
+    function openPage(pageId) {
+        const pages = document.querySelectorAll('.page');
+        const buttons = document.querySelectorAll('nav button');
 
-      // Mostra a secao selecionada
-      const paginaSelecionada = document.getElementById(idPagina);
-      if (paginaSelecionada) {
-        paginaSelecionada.classList.add('active');
-        window.scrollTo(0, 0); // Rola para o topo ao trocar de pagina
-      }
+        pages.forEach(page => page.classList.remove('active'));
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        document.getElementById(pageId).classList.add('active');
+        event.currentTarget.classList.add('active');
     }
-  </script>
+
+    // Funcoes para abrir/fechar o modal
+    function openModal(text) {
+        document.getElementById('modal-text').innerText = text;
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
