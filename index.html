@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casos de Tremembe - Informação e Memoria</title>
+  <title>Casos de Tremembe - Informacao e Memoria</title>
   <style>
     * {
       box-sizing: border-box;
@@ -40,7 +40,7 @@
       padding: 0 1rem;
     }
 
-    /* Navegação do site */
+    /* Navegacao do site */
     .view {
       display: none;
     }
@@ -143,7 +143,7 @@
 <body>
 
   <header>
-    <h1>Casos de Repercussão em Tremembe</h1>
+    <h1>Casos de Repercussao em Tremembe</h1>
     <p>Portal informativo e historico sobre os processos judiciais</p>
   </header>
 
@@ -151,16 +151,16 @@
 
     <!-- TELA INICIAL (HOME) -->
     <section id="home" class="view active">
-      <h2>Visão Geral</h2>
+      <h2>Visao Geral</h2>
       <p style="margin-top: 0.5rem;">
-        O Complexo Penitenciario de Tremembe (Penitenciaria II "Dr. Jose Augusto César Salgado") é conhecido nacionalmente por custodiar pessoas envolvidas em processos judiciais de grande repercussão pública.
+        O Complexo Penitenciario de Tremembe (Penitenciaria II "Dr. Jose Augusto Cesar Salgado") e conhecido nacionalmente por custodiar pessoas envolvidas em processos judiciais de grande repercussão pública.
       </p>
 
       <div class="grid-casos">
         
         <!-- Card 1 -->
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600" alt="Justiça">
+          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600" alt="Justica">
           <div class="card-body">
             <h3>Caso Richthofen</h3>
             <p>Processo de 2002 envolvendo o julgamento ocorrido em 2006.</p>
@@ -183,26 +183,26 @@
 
     <!-- DETALHES: CASO RICHTHOFEN -->
     <section id="richthofen" class="view">
-      <button class="btn btn-voltar" onclick="mostrarPagina('home')">← Voltar para o início</button>
+      <button class="btn btn-voltar" onclick="mostrarPagina('home')"> > Voltar para o inicio</button>
       <div class="detail-card">
         <h2>Caso Richthofen</h2>
-        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800" alt="Símbolo da Justiça">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800" alt="Simbolo da Justica">
         <h3>Historico Processual</h3>
         <p>
-          O crime ocorreu em São Paulo no ano de 2002. O julgamento dos envolvidos ocorreu em 2006, resultando no cumprimento de pena na Penitenciária de Tremembé, local destinado ao isolamento e proteção de detentos com forte apelo midiático.
+          O crime ocorreu em Sao Paulo no ano de 2002. O julgamento dos envolvidos ocorreu em 2006, resultando no cumprimento de pena na Penitenciaria de Tremembe, local destinado ao isolamento e proteção de detentos com forte apelo midiático.
         </p>
       </div>
     </section>
 
     <!-- DETALHES: CASO NARDONI -->
     <section id="nardoni" class="view">
-      <button class="btn btn-voltar" onclick="mostrarPagina('home')">← Voltar para o início</button>
+      <button class="btn btn-voltar" onclick="mostrarPagina('home')"> > Voltar para o inicio</button>
       <div class="detail-card">
         <h2>Caso Nardoni</h2>
-        <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?w=800" alt="Documentos e Balança">
+        <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?w=800" alt="Documentos e Balanca">
         <h3>Historico Processual</h3>
         <p>
-          Ocorrido em 2008 em São Paulo, o julgamento foi concluido em 2010. A transferência dos condenados para Tremembé visou garantir a segurança física dos detentos devido à repercussão nacional do caso.
+          Ocorrido em 2008 em Sao Paulo, o julgamento foi concluido em 2010. A transferencia dos condenados para Tremembe visou garantir a seguranca fisica dos detentos devido à repercussão nacional do caso.
         </p>
       </div>
     </section>
@@ -210,16 +210,16 @@
   </div>
 
   <footer>
-    <p>Projeto Informativo — Registros publicos e cobertura jornalistica histórica.</p>
+    <p>Projeto Informativo  Registros publicos e cobertura jornalistica historica.</p>
   </footer>
 
   <script>
     function mostrarPagina(idPagina) {
-      // Esconde todas as seções
+      // Esconde todas as secaes
       const paginas = document.querySelectorAll('.view');
       paginas.forEach(pagina => pagina.classList.remove('active'));
 
-      // Mostra a seção selecionada
+      // Mostra a secao selecionada
       const paginaSelecionada = document.getElementById(idPagina);
       if (paginaSelecionada) {
         paginaSelecionada.classList.add('active');
