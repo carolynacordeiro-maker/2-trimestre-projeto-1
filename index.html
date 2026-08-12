@@ -1,33 +1,232 @@
 <!DOCTYPE html>
-<html lang="pt-br"
+<html lang="pt-BR">
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-windth,initial-scale=1.0">
-     <title>Blog</title>
-     <style>
-        header{
-            background-color: #ae034d;
-            color:#FFFFFF;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            border: 5px solid #e6e6e6;
-        }
-        main {
-            background-color: #000000
-            colo: #800037;
-        }
-     </style>
- </head>
- <body>
-      <header>  
-       <h1>Meu blog tech</h1>
-       <p>Vou compartilhar conhecimentos sobre tecnologia e programação</p>
-           </header>
-            <Main>           
-          <h2>Meu primeiro post</h2>
-          <p>Por:Carolyna Vitória </p>
-          <p>Boas-vindas ao meu novo blog! Aqui vou compartilhar dicas de programação e curiosidades da área de tecnologia.</p>
-          </Main>
-     </body>    <
- </html>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casos de Tremembé - Informação e Memória</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #1e293b;
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: #94a3b8;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    /* Navegação do site */
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    /* Cards da Home */
+    .grid-casos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-body h3 {
+      color: #1e293b;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-body p {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1rem;
+      background-color: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background-color: #1d4ed8;
+    }
+
+    /* Estilo das Páginas de Detalhes */
+    .detail-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+
+    .detail-card img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .btn-voltar {
+      background-color: #64748b;
+      margin-bottom: 1rem;
+    }
+
+    .btn-voltar:hover {
+      background-color: #475569;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Casos de Repercussão em Tremembé</h1>
+    <p>Portal informativo e histórico sobre os processos judiciais</p>
+  </header>
+
+  <div class="container">
+
+    <!-- TELA INICIAL (HOME) -->
+    <section id="home" class="view active">
+      <h2>Visão Geral</h2>
+      <p style="margin-top: 0.5rem;">
+        O Complexo Penitenciário de Tremembé (Penitenciária II "Dr. José Augusto César Salgado") é conhecido nacionalmente por custodiar pessoas envolvidas em processos judiciais de grande repercussão pública.
+      </p>
+
+      <div class="grid-casos">
+        
+        <!-- Card 1 -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600" alt="Justiça">
+          <div class="card-body">
+            <h3>Caso Richthofen</h3>
+            <p>Processo de 2002 envolvendo o julgamento ocorrido em 2006.</p>
+            <button class="btn" onclick="mostrarPagina('richthofen')">Ver Detalhes</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?w=600" alt="Documentos Judiciais">
+          <div class="card-body">
+            <h3>Caso Nardoni</h3>
+            <p>Detalhes sobre o julgamento e acompanhamento do processo de 2008.</p>
+            <button class="btn" onclick="mostrarPagina('nardoni')">Ver Detalhes</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DETALHES: CASO RICHTHOFEN -->
+    <section id="richthofen" class="view">
+      <button class="btn btn-voltar" onclick="mostrarPagina('home')">← Voltar para o início</button>
+      <div class="detail-card">
+        <h2>Caso Richthofen</h2>
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800" alt="Símbolo da Justiça">
+        <h3>Histórico Processual</h3>
+        <p>
+          O crime ocorreu em São Paulo no ano de 2002. O julgamento dos envolvidos ocorreu em 2006, resultando no cumprimento de pena na Penitenciária de Tremembé, local destinado ao isolamento e proteção de detentos com forte apelo midiático.
+        </p>
+      </div>
+    </section>
+
+    <!-- DETALHES: CASO NARDONI -->
+    <section id="nardoni" class="view">
+      <button class="btn btn-voltar" onclick="mostrarPagina('home')">← Voltar para o início</button>
+      <div class="detail-card">
+        <h2>Caso Nardoni</h2>
+        <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?w=800" alt="Documentos e Balança">
+        <h3>Histórico Processual</h3>
+        <p>
+          Ocorrido em 2008 em São Paulo, o julgamento foi concluído em 2010. A transferência dos condenados para Tremembé visou garantir a segurança física dos detentos devido à repercussão nacional do caso.
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>
+    <p>Projeto Informativo — Registros públicos e cobertura jornalística histórica.</p>
+  </footer>
+
+  <script>
+    function mostrarPagina(idPagina) {
+      // Esconde todas as seções
+      const paginas = document.querySelectorAll('.view');
+      paginas.forEach(pagina => pagina.classList.remove('active'));
+
+      // Mostra a seção selecionada
+      const paginaSelecionada = document.getElementById(idPagina);
+      if (paginaSelecionada) {
+        paginaSelecionada.classList.add('active');
+        window.scrollTo(0, 0); // Rola para o topo ao trocar de página
+      }
+    }
+  </script>
+
+</body>
+</html>
